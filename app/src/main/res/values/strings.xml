@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">QRStudent</string>
+    <string-array name="roles_array">
+        <item>Alumno</item>
+        <item>Profesor</item>
+        <item>Admin</item>
+    </string-array>
+</resources>

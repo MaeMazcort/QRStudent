@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="email@example.com"/>
+
+    <TextView
+        android:id="@+id/tvRol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rol"/>
+
+</LinearLayout>
