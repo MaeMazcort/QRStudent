@@ -1,9 +1,11 @@
 package com.example.qrstudent
+
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.OptIn
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -16,6 +18,8 @@ import com.google.mlkit.vision.common.InputImage
 class ScanQR : AppCompatActivity() {
 
     private lateinit var previewView: PreviewView
+
+    private var isScanned = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,19 +46,20 @@ class ScanQR : AppCompatActivity() {
             val preview = Preview.Builder().build().also {
                 it.setSurfaceProvider(previewView.surfaceProvider)
             }
-
+            //There's a error but it still function correctly, don't worry about it
             val barcodeScanner = BarcodeScanning.getClient()
             val analysis = ImageAnalysis.Builder().build().also {
                 it.setAnalyzer(ContextCompat.getMainExecutor(this)) { imageProxy ->
                     val mediaImage = imageProxy.image
-                    if (mediaImage != null) {
+                    if (mediaImage != null && !isScanned) {
                         val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
                         barcodeScanner.process(image)
                             .addOnSuccessListener { barcodes ->
                                 for (barcode in barcodes) {
                                     val rawValue = barcode.rawValue
-                                    Toast.makeText(this, "QR: $rawValue", Toast.LENGTH_SHORT).show()
-                                    // Aquí puedes manejar el QR, por ejemplo abrir un enlace
+                                    isScanned = true
+
+                                    showSuccessDialog()
                                 }
                             }
                             .addOnFailureListener {
@@ -73,5 +78,19 @@ class ScanQR : AppCompatActivity() {
             cameraProvider.unbindAll()
             cameraProvider.bindToLifecycle(this, cameraSelector, preview, analysis)
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun showSuccessDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("¡Éxito!")
+            .setMessage("Has pasado lista exitosamente")
+            .setPositiveButton("Aceptar") { dialog, _ ->
+                val intent = Intent(this, AlumnoDashboardActivity::class.java)
+                startActivity(intent)
+                finish() // Finalizar la actividad actual
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
     }
 }
