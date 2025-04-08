@@ -22,7 +22,7 @@ class UsuariosAdapter(
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
         val usuario = usuarios[position]
         holder.binding.tvEmail.text = usuario.email
-        holder.binding.tvRol.text = usuario.rol
+        holder.binding.tvRol.text = usuario.role
         holder.itemView.setOnClickListener { onClick(usuario) }
     }
 }

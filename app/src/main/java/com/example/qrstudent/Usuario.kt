@@ -1,12 +1,12 @@
 package com.example.qrstudent
 
 data class Usuario(
-    val id: String = "",
-    val nombre: String = "",
-    val email: String = "",
-    val rol: String = ""
-){
+    var id: String = "",
+    var name: String = "",
+    var email: String = "",
+    var role: String = ""
+) {
     override fun toString(): String {
-        return "$nombre ($email)"
+        return "$name ($email)"
     }
 }
