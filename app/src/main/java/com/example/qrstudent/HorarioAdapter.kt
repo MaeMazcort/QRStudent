@@ -23,7 +23,7 @@ class HorarioAdapter(
     override fun onBindViewHolder(holder: HorarioViewHolder, position: Int) {
         val materia = horario[position]
         holder.binding.tvMateriaNombre.text = materia.nombre
-        holder.binding.tvMateriaHorario.text = materia.horario
+        //holder.binding.tvMateriaHorario.text = materia.horario
         holder.itemView.setOnClickListener { onClick(materia) }
     }
 }

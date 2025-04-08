@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Permiso para acceder a la cámara -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permiso para acceder a la cámara -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QRStudent"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SeleccionarMateriaActivity"
+            android:exported="false" />
         <activity
             android:name=".VerHorarioAlumnoActivity"
             android:exported="false" />
@@ -31,16 +35,15 @@
         <activity
             android:name=".ConfirmarAsistenciaActivity"
             android:exported="false" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".EscanearQRActivity"
             android:exported="false" />
@@ -77,11 +80,9 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".ScanQR"
             android:exported="false" />
-
     </application>
 
 </manifest>

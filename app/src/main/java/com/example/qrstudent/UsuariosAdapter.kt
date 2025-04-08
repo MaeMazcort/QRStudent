@@ -10,19 +10,23 @@ class UsuariosAdapter(
     private val onClick: (Usuario) -> Unit
 ) : RecyclerView.Adapter<UsuariosAdapter.UsuarioViewHolder>() {
 
-    inner class UsuarioViewHolder(val binding: ItemUsuarioBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class UsuarioViewHolder(val binding: ItemUsuarioBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
         val binding = ItemUsuarioBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UsuarioViewHolder(binding)
     }
 
-    override fun getItemCount() = usuarios.size
-
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
         val usuario = usuarios[position]
-        holder.binding.tvEmail.text = usuario.email
-        holder.binding.tvRol.text = usuario.role
-        holder.itemView.setOnClickListener { onClick(usuario) }
+        with(holder.binding) {
+            txtNombreUsuario.text = usuario.name
+            txtEmailUsuario.text = usuario.email
+            txtRolUsuario.text = "Rol: ${usuario.role}"
+            root.setOnClickListener { onClick(usuario) }
+        }
     }
+
+    override fun getItemCount() = usuarios.size
 }

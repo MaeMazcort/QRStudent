@@ -19,7 +19,7 @@ class ProfesorDashboardActivity : AppCompatActivity() {
         }
 
         binding.btnAsignarCalificaciones.setOnClickListener {
-            startActivity(Intent(this, AsignarCalificacionesActivity::class.java))
+            startActivity(Intent(this, SeleccionarMateriaActivity::class.java))
         }
 
         binding.btnVerHorario.setOnClickListener {
