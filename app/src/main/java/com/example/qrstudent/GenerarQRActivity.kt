@@ -30,7 +30,7 @@ class GenerarQRActivity : AppCompatActivity() {
 
         binding.recyclerMaterias.layoutManager = LinearLayoutManager(this)
 
-        val adapter = HorarioAdapter(
+        val adapter = HorarioAdapter2(
             materiasList,
             onClick = { materia ->
                 val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
@@ -56,7 +56,7 @@ class GenerarQRActivity : AppCompatActivity() {
         obtenerMateriasDelProfesor(adapter)
     }
 
-    private fun obtenerMateriasDelProfesor(adapter: HorarioAdapter) {
+    private fun obtenerMateriasDelProfesor(adapter: HorarioAdapter2) {
         val currentUser = auth.currentUser ?: return
 
         binding.progressBar.visibility = View.VISIBLE
