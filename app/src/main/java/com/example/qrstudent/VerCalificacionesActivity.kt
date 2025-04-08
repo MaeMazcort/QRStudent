@@ -14,7 +14,7 @@ class VerCalificacionesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVerCalificacionesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.hide()
         val materias = listOf(
             MateriaAlumno("Matemáticas", "95"),
             MateriaAlumno("Historia", "88")

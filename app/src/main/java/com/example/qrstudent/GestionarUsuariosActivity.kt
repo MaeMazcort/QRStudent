@@ -15,7 +15,7 @@ class GestionarUsuariosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGestionarUsuariosBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.hide()
         // Simulación lista de usuarios
         val listaUsuarios = listOf(
             Usuario("usuario1@example.com", "Alumno"),

@@ -12,7 +12,7 @@ class ConfirmarAsistenciaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmarAsistenciaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.hide()
         binding.btnCerrar.setOnClickListener {
             finish()
         }

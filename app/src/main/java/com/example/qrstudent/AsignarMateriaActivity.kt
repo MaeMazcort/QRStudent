@@ -15,7 +15,7 @@ class AsignarMateriaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAsignarMateriaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.hide()
         // Simulación de lista de materias existentes
         val listaMaterias = listOf(
             Materia("Matemáticas", "MATE101", "Profesor A"),

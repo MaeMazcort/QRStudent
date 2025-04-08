@@ -9,6 +9,7 @@ import com.example.qrstudent.databinding.ItemAlumnoCalificacionBinding
 class CalificacionesAdapter(
     private val alumnos: List<Alumno>,
     private val onCalificacionSaved: (Alumno) -> Unit
+
 ) : RecyclerView.Adapter<CalificacionesAdapter.CalificacionViewHolder>() {
 
     inner class CalificacionViewHolder(val binding: ItemAlumnoCalificacionBinding) :
@@ -18,6 +19,7 @@ class CalificacionesAdapter(
         val binding = ItemAlumnoCalificacionBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
+
         return CalificacionViewHolder(binding)
     }
 
@@ -25,10 +27,12 @@ class CalificacionesAdapter(
 
     override fun onBindViewHolder(holder: CalificacionViewHolder, position: Int) {
         val alumno = alumnos[position]
+
         holder.binding.tvAlumnoNombre.text = alumno.nombre
 
         holder.binding.btnGuardarCalificacion.setOnClickListener {
             val calif = holder.binding.etCalificacion.text.toString()
+
             if(calif.isNotEmpty()){
                 alumno.calificacion = calif
                 onCalificacionSaved(alumno)

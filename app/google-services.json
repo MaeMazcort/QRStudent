@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "894515899151",
+    "project_id": "qrstudent-2d25c",
+    "storage_bucket": "qrstudent-2d25c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894515899151:android:b53a0320dc325e54086c7a",
+        "android_client_info": {
+          "package_name": "com.example.qrstudent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaMIkAGomeJzh3jyML71N8yXhiLWpIo_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

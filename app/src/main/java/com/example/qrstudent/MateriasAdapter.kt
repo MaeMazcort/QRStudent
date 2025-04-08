@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.qrstudent.databinding.ItemMateriaBinding
 
 class MateriasAdapter(
-    private val materias: List<Materia>,
+    private var materias: List<Materia>,
     private val onClick: (Materia) -> Unit
 ) : RecyclerView.Adapter<MateriasAdapter.MateriaViewHolder>() {
 
@@ -17,13 +17,17 @@ class MateriasAdapter(
         return MateriaViewHolder(binding)
     }
 
-    override fun getItemCount() = materias.size
-
     override fun onBindViewHolder(holder: MateriaViewHolder, position: Int) {
         val materia = materias[position]
-        holder.binding.tvNombreMateria.text = materia.nombre
-        holder.binding.tvCodigoMateria.text = materia.codigo
-        holder.binding.tvProfesorAsignado.text = materia.profesorAsignado
-        holder.itemView.setOnClickListener { onClick(materia) }
+        holder.binding.txtMateriaNombre.text = materia.nombre
+        holder.binding.txtCodigo.text = materia.codigo
+        holder.binding.root.setOnClickListener { onClick(materia) }
+    }
+
+    override fun getItemCount() = materias.size
+
+    fun actualizarLista(nuevaLista: List<Materia>) {
+        materias = nuevaLista
+        notifyDataSetChanged()
     }
 }

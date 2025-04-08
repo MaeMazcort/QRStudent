@@ -14,7 +14,7 @@ class AsignarCalificacionesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAsignarCalificacionesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.hide()
         val alumnos = listOf(
             Alumno("Alumno A", ""),
             Alumno("Alumno B", ""),

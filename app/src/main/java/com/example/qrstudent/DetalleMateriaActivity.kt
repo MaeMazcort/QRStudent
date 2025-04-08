@@ -12,7 +12,7 @@ class DetalleMateriaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetalleMateriaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.hide()
         val nombreMateria = intent.getStringExtra("nombreMateria") ?: "Materia"
         binding.tvNombreMateria.text = nombreMateria
 

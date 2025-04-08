@@ -14,7 +14,7 @@ class VerHorarioAlumnoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVerHorarioAlumnoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar!!.hide()
         val horario = listOf(
             MateriaHorario("Matemáticas", "Lunes 9am-11am"),
             MateriaHorario("Historia", "Miércoles 12pm-2pm")
