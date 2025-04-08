@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.qrstudent.databinding.ActivityEscanearQrBinding
+import java.util.Scanner
 
 class EscanearQRActivity : AppCompatActivity() {
 
@@ -16,9 +17,8 @@ class EscanearQRActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSimularEscanearQR.setOnClickListener {
-            Toast.makeText(this, "QR Escaneado (simulado)", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, ConfirmarAsistenciaActivity::class.java))
-            finish()
+            val intent = Intent(this, ScanQR::class.java)
+            startActivity(intent)
         }
     }
 }
