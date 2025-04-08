@@ -29,6 +29,37 @@
             android:hint="Descripción"
             android:layout_marginTop="8dp"/>
 
+        <!-- Nuevos campos para la hora -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Horario de la materia"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/etDiasMateria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Días (ej: Lunes, Miércoles)"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etHoraInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hora de inicio (ej: 08:00)"
+            android:inputType="time"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etHoraFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hora de fin (ej: 10:00)"
+            android:inputType="time"
+            android:layout_marginTop="8dp"/>
+
         <Button
             android:id="@+id/btnGuardarMateria"
             android:layout_width="match_parent"
@@ -37,5 +68,4 @@
             android:layout_marginTop="16dp"/>
 
     </LinearLayout>
-
 </ScrollView>

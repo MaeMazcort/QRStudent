@@ -1,54 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".DetalleMateriaActivity">
 
     <TextView
-        android:id="@+id/tvNombreMateria"
+        android:id="@+id/tvTituloMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Materia"
+        android:text="Nombre de la materia"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detalle de Materia"
-        android:textSize="15sp"
-        android:textStyle="bold"/>
+        android:layout_margin="8dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Profesor: Profesor Ejemplo"
-        android:layout_marginTop="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Horario: Lunes y Miércoles, 8am-10am"
-        android:layout_marginTop="4dp"/>
+            <TextView
+                android:id="@+id/tvCalificacionDetalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tu calificación: 95"
+                android:textSize="18sp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Asistencias: 10/12"
-        android:layout_marginTop="4dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calificación: 95"
-        android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btnCerrarDetalle"
+        android:id="@+id/btnRegresar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cerrar"
+        android:text="Regresar"
         android:layout_marginTop="16dp"/>
-
 
 </LinearLayout>

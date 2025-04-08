@@ -28,25 +28,47 @@ class CrearMateriaActivity : AppCompatActivity() {
             val nombreMateria = binding.etNombreMateria.text.toString().trim()
             val codigoMateria = binding.etCodigoMateria.text.toString().trim()
             val descripcionMateria = binding.etDescripcionMateria.text.toString().trim()
+            val diasMateria = binding.etDiasMateria.text.toString().trim()
+            val horaInicio = binding.etHoraInicio.text.toString().trim()
+            val horaFin = binding.etHoraFin.text.toString().trim()
 
-            if(nombreMateria.isEmpty() || codigoMateria.isEmpty() || descripcionMateria.isEmpty()){
+            if(nombreMateria.isEmpty() || codigoMateria.isEmpty() ||
+                descripcionMateria.isEmpty() || diasMateria.isEmpty() ||
+                horaInicio.isEmpty() || horaFin.isEmpty()) {
                 Toast.makeText(this, "Llena todos los campos", Toast.LENGTH_SHORT).show()
             } else {
-                guardarMateriaEnFirebase(nombreMateria, codigoMateria, descripcionMateria)
+                guardarMateriaEnFirebase(
+                    nombreMateria,
+                    codigoMateria,
+                    descripcionMateria,
+                    diasMateria,
+                    horaInicio,
+                    horaFin
+                )
             }
         }
     }
 
-    private fun guardarMateriaEnFirebase(nombre: String, codigo: String, descripcion: String) {
+    private fun guardarMateriaEnFirebase(
+        nombre: String,
+        codigo: String,
+        descripcion: String,
+        dias: String,
+        horaInicio: String,
+        horaFin: String
+    ) {
         // Generar un ID único para la materia
         val materiaId = materiasRef.push().key ?: return
 
-        // Crear objeto Materia
+        // Crear objeto Materia con los nuevos campos
         val materia = hashMapOf(
             "id" to materiaId,
             "nombre" to nombre,
             "codigo" to codigo,
             "descripcion" to descripcion,
+            "dias" to dias,
+            "horaInicio" to horaInicio,
+            "horaFin" to horaFin,
             "fechaCreacion" to Calendar.getInstance().timeInMillis
         )
 

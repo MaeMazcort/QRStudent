@@ -3,19 +3,21 @@ package com.example.qrstudent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.qrstudent.databinding.ItemMateriaHorarioBinding
+import com.example.qrstudent.databinding.ItemMateriaHorarioAlumnoBinding
 
-class HorarioAdapter(
+class HorarioAdapter2(
     private val horario: List<MateriaHorario>,
     private val onClick: (MateriaHorario) -> Unit,
     private val onVerAlumnosClick: ((MateriaHorario) -> Unit)? = null
-) : RecyclerView.Adapter<HorarioAdapter.HorarioViewHolder>() {
+) : RecyclerView.Adapter<HorarioAdapter2.HorarioViewHolder>() {
 
-    inner class HorarioViewHolder(val binding: ItemMateriaHorarioBinding) :
+    // ViewHolder que usaremos
+    inner class HorarioViewHolder(val binding: ItemMateriaHorarioAlumnoBinding) :
         RecyclerView.ViewHolder(binding.root)
 
+    // Este método crea el ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorarioViewHolder {
-        val binding = ItemMateriaHorarioBinding.inflate(
+        val binding = ItemMateriaHorarioAlumnoBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -23,8 +25,7 @@ class HorarioAdapter(
         return HorarioViewHolder(binding)
     }
 
-    override fun getItemCount() = horario.size
-
+    // Este método se utiliza para enlazar los datos con las vistas
     override fun onBindViewHolder(holder: HorarioViewHolder, position: Int) {
         val materia = horario[position]
         with(holder.binding) {
@@ -36,8 +37,11 @@ class HorarioAdapter(
             // Listener para todo el elemento
             root.setOnClickListener { onClick(materia) }
 
-            // Listener específico para el botón Ver
-            btnVerAlumnos.setOnClickListener { onVerAlumnosClick?.invoke(materia) }
+            // Si se proporciona un onVerAlumnosClick, se puede usar (en este caso no lo usas)
+
         }
     }
+
+    // Retorna el tamaño de la lista de materias
+    override fun getItemCount() = horario.size
 }

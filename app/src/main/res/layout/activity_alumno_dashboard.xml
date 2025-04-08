@@ -9,7 +9,7 @@
         android:id="@+id/btnEscanearQR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Escanear QR Asistencia"/>
+        android:text="Escanear QR Asistencia" />
 
     <Button
         android:id="@+id/btnVerCalificaciones"

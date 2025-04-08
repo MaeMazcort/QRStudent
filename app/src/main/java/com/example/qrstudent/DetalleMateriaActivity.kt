@@ -12,13 +12,19 @@ class DetalleMateriaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetalleMateriaBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar!!.hide()
-        val nombreMateria = intent.getStringExtra("nombreMateria") ?: "Materia"
-        binding.tvNombreMateria.text = nombreMateria
+        supportActionBar?.hide()
 
-        binding.btnCerrarDetalle.setOnClickListener {
+        // Obtener datos de la materia
+        val materiaNombre = intent.getStringExtra("MATERIA_NOMBRE") ?: "Sin nombre"
+        val calificacion = intent.getStringExtra("CALIFICACION") ?: "Sin calificación"
+
+        // Configurar vistas
+        binding.tvTituloMateria.text = materiaNombre
+        binding.tvCalificacionDetalle.text = "Calificación: $calificacion"
+
+        // Botón de regreso
+        binding.btnRegresar.setOnClickListener {
             finish()
         }
     }
-
 }

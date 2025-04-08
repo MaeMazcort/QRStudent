@@ -11,6 +11,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import android.content.Context
+import androidx.appcompat.app.AlertDialog
+
 
 class AsignarCalificacionesActivity : AppCompatActivity() {
 
@@ -80,28 +83,23 @@ class AsignarCalificacionesActivity : AppCompatActivity() {
                     return
                 }
 
+                // Accede a los alumnos de la materia
                 val alumnosNode = snapshot.child("alumnos")
 
-                Log.d("FirebaseDebug", "alumnosNode exists: ${alumnosNode.exists()}")
-                Log.d("FirebaseDebug", "alumnosNode value: ${alumnosNode.value}")
-                Log.d("FirebaseDebug", "alumnosNode childrenCount: ${alumnosNode.childrenCount}")
-
+                // Si no hay alumnos o el nodo está vacío, muestra mensaje
                 if (!alumnosNode.exists() || alumnosNode.childrenCount <= 0) {
                     binding.progressBar.visibility = View.GONE
                     binding.tvNoAlumnos.visibility = View.VISIBLE
                     return
                 }
 
-                // Obtener los IDs de los alumnos desde el campo "Valor"
                 val alumnosIds = mutableListOf<String>()
                 for (alumnoSnapshot in alumnosNode.children) {
                     val alumnoId = alumnoSnapshot.getValue(String::class.java)
                     if (!alumnoId.isNullOrEmpty()) {
                         alumnosIds.add(alumnoId)
-                        Log.d("FirebaseDebug", "Alumno ID encontrado: $alumnoId")
                     }
                 }
-
 
                 if (alumnosIds.isEmpty()) {
                     binding.progressBar.visibility = View.GONE
@@ -112,54 +110,48 @@ class AsignarCalificacionesActivity : AppCompatActivity() {
                 var alumnosCargados = 0
 
                 for (alumnoId in alumnosIds) {
+                    // Accede al nodo "users" para obtener los detalles del alumno
                     val usuarioRef = database.getReference("users").child(alumnoId)
                     usuarioRef.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(alumnoSnapshot: DataSnapshot) {
-                            try {
-                                val rol = alumnoSnapshot.child("role").getValue(String::class.java)
-                                if (rol != "Alumno") {
-                                    Log.d("FirebaseDebug", "Usuario $alumnoId no es Alumno")
-                                    alumnosCargados++
-                                    verificarCargaCompleta(alumnosCargados, alumnosIds.size)
-                                    return
-                                }
-
-                                val nombre = alumnoSnapshot.child("name").getValue(String::class.java) ?: "Sin nombre"
-                                val email = alumnoSnapshot.child("email").getValue(String::class.java) ?: ""
-
-                                val calificacionRef = database.getReference("calificaciones")
-                                    .child(materiaId).child(alumnoId)
-
-                                calificacionRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                                    override fun onDataChange(calificacionSnapshot: DataSnapshot) {
-                                        val calificacion = calificacionSnapshot.getValue(String::class.java) ?: ""
-
-                                        val alumno = Alumno(
-                                            id = alumnoId,
-                                            nombre = nombre,
-                                            email = email,
-                                            calificacion = calificacion
-                                        )
-                                        alumnos.add(alumno)
-                                        alumnosCargados++
-                                        verificarCargaCompleta(alumnosCargados, alumnosIds.size)
-                                    }
-
-                                    override fun onCancelled(error: DatabaseError) {
-                                        Log.e("FirebaseDebug", "Error al cargar calificación: ${error.message}")
-                                        alumnosCargados++
-                                        verificarCargaCompleta(alumnosCargados, alumnosIds.size)
-                                    }
-                                })
-                            } catch (e: Exception) {
-                                Log.e("FirebaseDebug", "Error al procesar alumno: ${e.message}")
+                            val rol = alumnoSnapshot.child("role").getValue(String::class.java)
+                            if (rol != "Alumno") {
                                 alumnosCargados++
                                 verificarCargaCompleta(alumnosCargados, alumnosIds.size)
+                                return
                             }
+
+                            val nombre = alumnoSnapshot.child("name").getValue(String::class.java) ?: "Sin nombre"
+                            val email = alumnoSnapshot.child("email").getValue(String::class.java) ?: ""
+
+                            // Carga las calificaciones del alumno
+                            val calificacionRef = database.getReference("calificaciones")
+                                .child(materiaId).child(alumnoId)
+
+                            calificacionRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(calificacionSnapshot: DataSnapshot) {
+                                    val calificacion = calificacionSnapshot.getValue(String::class.java) ?: ""
+
+                                    // Crear el objeto Alumno con la información cargada
+                                    val alumno = Alumno(
+                                        id = alumnoId,
+                                        nombre = nombre,
+                                        email = email,
+                                        calificacion = calificacion
+                                    )
+                                    alumnos.add(alumno)
+                                    alumnosCargados++
+                                    verificarCargaCompleta(alumnosCargados, alumnosIds.size)
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                    alumnosCargados++
+                                    verificarCargaCompleta(alumnosCargados, alumnosIds.size)
+                                }
+                            })
                         }
 
                         override fun onCancelled(error: DatabaseError) {
-                            Log.e("FirebaseDebug", "Error al obtener alumno: ${error.message}")
                             alumnosCargados++
                             verificarCargaCompleta(alumnosCargados, alumnosIds.size)
                         }
@@ -180,6 +172,7 @@ class AsignarCalificacionesActivity : AppCompatActivity() {
         })
     }
 
+
     private fun verificarCargaCompleta(cargados: Int, total: Int) {
         if (cargados >= total) {
             binding.progressBar.visibility = View.GONE
@@ -190,7 +183,6 @@ class AsignarCalificacionesActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     private fun guardarCalificacion(alumno: Alumno) {
@@ -218,5 +210,77 @@ class AsignarCalificacionesActivity : AppCompatActivity() {
                 ).show()
                 Log.e("FirebaseDebug", "Error al guardar calificación: ${e.message}")
             }
+    }
+
+    fun verHorarioAlumno(alumnoId: String) {
+        val context = this@AsignarCalificacionesActivity
+        val usuarioRef = database.getReference("users").child(alumnoId)
+
+        usuarioRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val materiasNode = snapshot.child("materias")
+                if (!materiasNode.exists()) {
+                    Toast.makeText(
+                        context,
+                        "El alumno no tiene materias asignadas",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return
+                }
+
+                val materiaInfoList = mutableListOf<String>()
+                var materiasCargadas = 0
+                val totalMaterias = materiasNode.childrenCount.toInt()
+
+                for (materiaSnapshot in materiasNode.children) {
+                    val materiaId = materiaSnapshot.key ?: continue
+
+                    val materiaRef = database.getReference("materias").child(materiaId)
+                    materiaRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(materiaData: DataSnapshot) {
+                            val nombre = materiaData.child("nombre").getValue(String::class.java)
+                                ?: "Sin nombre"
+                            val horario = materiaData.child("horario").getValue(String::class.java)
+                                ?: "Sin horario"
+                            val descripcion =
+                                materiaData.child("descripcion").getValue(String::class.java)
+                                    ?: "Sin descripción"
+
+                            val info = "📘 $nombre\n🕒 Horario: $horario\n📝 $descripcion"
+                            materiaInfoList.add(info)
+
+                            materiasCargadas++
+                            if (materiasCargadas == totalMaterias) {
+                                mostrarMateriasDialog(materiaInfoList, context)
+                            }
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            materiasCargadas++
+                            Log.e("verHorarioAlumno", "Error al cargar materia: ${error.message}")
+                        }
+                    })
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "Error al obtener datos del alumno", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        })
+    }
+
+    private fun mostrarMateriasDialog(materias: List<String>, context: Context) {
+        val mensaje = if (materias.isNotEmpty()) {
+            materias.joinToString("\n\n")
+        } else {
+            "El alumno no tiene materias registradas."
+        }
+
+        AlertDialog.Builder(context)
+            .setTitle("Materias del Alumno")
+            .setMessage(mensaje)
+            .setPositiveButton("Cerrar", null)
+            .show()
     }
 }

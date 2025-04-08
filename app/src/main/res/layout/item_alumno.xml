@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="12dp">
 
         <TextView
-            android:id="@+id/tvMateriaNombre"
+            android:id="@+id/tvAlumnoNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre de la materia"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:text="Nombre del Alumno"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvCalificacion"
+            android:id="@+id/tvAlumnoEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Calificación: 95"
-            android:textSize="16sp" />
-
+            android:text="email@ejemplo.com"
+            android:textColor="?android:attr/textColorSecondary"
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
