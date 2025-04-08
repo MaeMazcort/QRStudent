@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvMateriaNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Materia"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvCalificacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calificación: 0"/>
+
+</LinearLayout>

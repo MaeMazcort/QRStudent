@@ -6,16 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.qrstudent.databinding.ItemMateriaHorarioBinding
 
 class HorarioAdapter(
-    private val horario: List<MateriaHorario>
+    private val horario: List<MateriaHorario>,
+    private val onClick: (MateriaHorario) -> Unit
 ) : RecyclerView.Adapter<HorarioAdapter.HorarioViewHolder>() {
 
     inner class HorarioViewHolder(val binding: ItemMateriaHorarioBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorarioViewHolder {
-        val binding = ItemMateriaHorarioBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
+        val binding = ItemMateriaHorarioBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HorarioViewHolder(binding)
     }
 
@@ -25,5 +24,7 @@ class HorarioAdapter(
         val materia = horario[position]
         holder.binding.tvMateriaNombre.text = materia.nombre
         holder.binding.tvMateriaHorario.text = materia.horario
+        holder.itemView.setOnClickListener { onClick(materia) }
     }
 }
+
