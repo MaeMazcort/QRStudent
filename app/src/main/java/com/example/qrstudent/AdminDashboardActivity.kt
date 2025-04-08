@@ -25,5 +25,9 @@ class AdminDashboardActivity : AppCompatActivity() {
         binding.btnAsignarMateria.setOnClickListener {
             startActivity(Intent(this, AsignarMateriaActivity::class.java))
         }
+
+        binding.btnCerrarSesion.setOnClickListener {
+            //
+        }
     }
 }

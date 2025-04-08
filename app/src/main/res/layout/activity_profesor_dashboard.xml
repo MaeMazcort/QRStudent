@@ -24,5 +24,20 @@
         android:layout_height="wrap_content"
         android:text="Ver Horario"
         android:layout_marginTop="16dp"/>
+    <!-- Espacio para empujar el botón hacia abajo -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Botón de cerrar sesión en la parte inferior -->
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>

@@ -26,5 +26,9 @@ class ProfesorDashboardActivity : AppCompatActivity() {
             startActivity(Intent(this, VerHorarioProfesorActivity::class.java))
         }
 
+        binding.btnCerrarSesion.setOnClickListener {
+            //
+        }
+
     }
 }

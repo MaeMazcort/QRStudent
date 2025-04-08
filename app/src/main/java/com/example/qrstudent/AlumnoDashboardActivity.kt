@@ -25,5 +25,9 @@ class AlumnoDashboardActivity : AppCompatActivity() {
         binding.btnVerHorario.setOnClickListener {
             startActivity(Intent(this, VerHorarioAlumnoActivity::class.java))
         }
+
+        binding.btnCerrarSesion.setOnClickListener {
+            //
+        }
     }
 }
