@@ -31,6 +31,7 @@ class ScanQR : AppCompatActivity() {
 
         previewView = findViewById(R.id.previewView)
 
+        //Permisos para la aplicación
         if (allPermissionsGranted()) {
             startCamera()
         } else {
@@ -42,6 +43,7 @@ class ScanQR : AppCompatActivity() {
         baseContext, Manifest.permission.CAMERA
     ) == PackageManager.PERMISSION_GRANTED
 
+    //Comienza el escaneo
     @OptIn(ExperimentalGetImage::class)
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
@@ -85,6 +87,7 @@ class ScanQR : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
     }
 
+    //Procesamiento del QR para crear el json
     private fun procesarQRyRegistrarAsistencia(rawValue: String) {
         try {
             val json = JSONObject(rawValue)
@@ -124,6 +127,7 @@ class ScanQR : AppCompatActivity() {
         }
     }
 
+    //Alerta de escaneo funcional
     private fun showSuccessDialog() {
         AlertDialog.Builder(this)
             .setTitle("¡Éxito!")
