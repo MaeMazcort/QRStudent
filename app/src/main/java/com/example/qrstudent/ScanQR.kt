@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -12,13 +13,16 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
+import org.json.JSONObject
 
 class ScanQR : AppCompatActivity() {
 
     private lateinit var previewView: PreviewView
-
     private var isScanned = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +50,7 @@ class ScanQR : AppCompatActivity() {
             val preview = Preview.Builder().build().also {
                 it.setSurfaceProvider(previewView.surfaceProvider)
             }
-            //There's a error but it still function correctly, don't worry about it
+
             val barcodeScanner = BarcodeScanning.getClient()
             val analysis = ImageAnalysis.Builder().build().also {
                 it.setAnalyzer(ContextCompat.getMainExecutor(this)) { imageProxy ->
@@ -57,9 +61,10 @@ class ScanQR : AppCompatActivity() {
                             .addOnSuccessListener { barcodes ->
                                 for (barcode in barcodes) {
                                     val rawValue = barcode.rawValue
-                                    isScanned = true
-
-                                    showSuccessDialog()
+                                    if (rawValue != null) {
+                                        isScanned = true
+                                        procesarQRyRegistrarAsistencia(rawValue)
+                                    }
                                 }
                             }
                             .addOnFailureListener {
@@ -80,6 +85,45 @@ class ScanQR : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
     }
 
+    private fun procesarQRyRegistrarAsistencia(rawValue: String) {
+        try {
+            val json = JSONObject(rawValue)
+            val materia = json.getString("materia")
+            val codigoClase = json.getString("codigoClase")
+            val fechaAsistencia = json.getString("fechaAsistencia")
+
+            val alumnoUid = FirebaseAuth.getInstance().currentUser?.uid
+            if (alumnoUid != null) {
+                val asistenciaRef = FirebaseDatabase.getInstance().getReference("asistencias")
+                    .child(codigoClase)
+                    .child(fechaAsistencia)
+                    .child(alumnoUid)
+
+                val asistenciaData = mapOf(
+                    "uidAlumno" to alumnoUid,
+                    "materia" to materia,
+                    "fecha" to fechaAsistencia,
+                    "timestamp" to ServerValue.TIMESTAMP
+                )
+
+                asistenciaRef.setValue(asistenciaData)
+                    .addOnSuccessListener {
+                        showSuccessDialog()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+                        Log.e("ScanQR", "Error al registrar asistencia", e)
+                    }
+            } else {
+                Toast.makeText(this, "No se pudo obtener el usuario", Toast.LENGTH_SHORT).show()
+            }
+
+        } catch (e: Exception) {
+            Toast.makeText(this, "Error al procesar QR: ${e.message}", Toast.LENGTH_SHORT).show()
+            Log.e("ScanQR", "Error al procesar QR", e)
+        }
+    }
+
     private fun showSuccessDialog() {
         AlertDialog.Builder(this)
             .setTitle("¡Éxito!")
@@ -87,7 +131,7 @@ class ScanQR : AppCompatActivity() {
             .setPositiveButton("Aceptar") { dialog, _ ->
                 val intent = Intent(this, AlumnoDashboardActivity::class.java)
                 startActivity(intent)
-                finish() // Finalizar la actividad actual
+                finish()
                 dialog.dismiss()
             }
             .setCancelable(false)
