@@ -3,13 +3,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center">
+    android:gravity="bottom">
 
     <Button
         android:id="@+id/btnGenerarQR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Generar QR Asistencia"/>
+        android:text="Generar QR Asistencia" />
 
     <Button
         android:id="@+id/btnAsignarCalificaciones"
@@ -25,12 +25,13 @@
         android:text="Ver Horario"
         android:layout_marginTop="16dp"/>
     <!-- Espacio para empujar el botón hacia abajo -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
 
     <!-- Botón de cerrar sesión en la parte inferior -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_weight="0" />
+
     <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_width="match_parent"

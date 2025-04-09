@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qrstudent.databinding.ActivityGenerarQrBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-
 import java.text.SimpleDateFormat
 import java.util.*
 
