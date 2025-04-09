@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qrstudent.databinding.ActivityGenerarQrBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,33 +33,27 @@ class GenerarQRActivity : AppCompatActivity() {
         val adapter = HorarioAdapter(
             materiasList,
             onClick = { materia ->
-                generarQR(materia)
+                val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+
+                val qrData = """
+                    Materia: ${materia.nombre}
+                    Código: ${materia.codigo}
+                    Día(s): ${materia.dias}
+                    Hora: ${materia.horaInicio} - ${materia.horaFin}
+                    Fecha: $fecha
+                """.trimIndent()
+
+                val intent = Intent(this, MostrarQRActivity::class.java).apply {
+                    putExtra("FECHA_ASISTENCIA", fecha)
+                    putExtra("QR_DATA", qrData)
+                }
+                startActivity(intent)
             },
             onVerAlumnosClick = null // No lo necesitas aquí
         )
 
         binding.recyclerMaterias.adapter = adapter
         obtenerMateriasDelProfesor(adapter)
-    }
-
-    private fun generarQR(materia: MateriaHorario) {
-        val fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-
-        // Crear un objeto JSON con los datos del QR
-        val qrData = """
-            {
-                "materia": "${materia.nombre}",
-                "codigoClase": "${materia.codigo}",
-                "fechaAsistencia": "$fecha"
-            }
-        """.trimIndent()
-
-        // Pasar los datos al MostrarQRActivity
-        val intent = Intent(this, MostrarQRActivity::class.java).apply {
-            putExtra("FECHA_ASISTENCIA", fecha)
-            putExtra("QR_DATA", qrData)
-        }
-        startActivity(intent)
     }
 
     private fun obtenerMateriasDelProfesor(adapter: HorarioAdapter) {

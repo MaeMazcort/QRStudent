@@ -6,14 +6,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Barra de búsqueda de materias -->
-    <SearchView
-        android:id="@+id/searchMaterias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:queryHint="Buscar materias..."/>
-
     <!-- Lista de materias -->
     <TextView
         android:layout_width="match_parent"

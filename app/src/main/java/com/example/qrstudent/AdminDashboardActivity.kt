@@ -25,5 +25,13 @@ class AdminDashboardActivity : AppCompatActivity() {
         binding.btnAsignarMateria.setOnClickListener {
             startActivity(Intent(this, AsignarMateriaActivity::class.java))
         }
+
+        binding.btnCerrarSesion.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("LOGOUT", true)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
     }
 }
