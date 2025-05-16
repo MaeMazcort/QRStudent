@@ -41,6 +41,9 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.retrofit2:retrofit:2.9.0") // Cliente HTTP
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Conversor JSON
+    implementation("com.squareup.picasso:picasso:2.8") // Cargar imágenes en ImageView
 
     implementation("androidx.camera:camera-core:1.3.1")
     implementation("androidx.camera:camera-camera2:1.3.1")

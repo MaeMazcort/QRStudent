@@ -26,6 +26,11 @@ class AlumnoDashboardActivity : AppCompatActivity() {
             startActivity(Intent(this, VerHorarioAlumnoActivity::class.java))
         }
 
+        binding.btnVerPerros.setOnClickListener {
+            val intent = Intent(this, DogActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnCerrarSesion.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             intent.putExtra("LOGOUT", true)

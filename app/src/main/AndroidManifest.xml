@@ -20,6 +20,9 @@
         android:theme="@style/Theme.QRStudent"
         tools:targetApi="31">
         <activity
+            android:name=".DogActivity"
+            android:exported="false" />
+        <activity
             android:name=".VerAlumnosActivity"
             android:exported="false" />
         <activity
