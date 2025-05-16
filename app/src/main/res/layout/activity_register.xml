@@ -3,51 +3,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#FFFFFF">
 
     <EditText
         android:id="@+id/editRegName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Full Name"
-        android:inputType="textPersonName"/>
+        android:hint="Nombre completo"
+        android:inputType="textPersonName"
+        android:backgroundTint="#1976D2"
+        android:fontFamily="sans-serif"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editRegEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Correo electrónico"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#1976D2"
+        android:fontFamily="sans-serif"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editRegPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#1976D2"
+        android:fontFamily="sans-serif"
+        android:minHeight="48dp" />
 
     <Spinner
         android:id="@+id/spinnerRole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="12dp" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_marginTop="16dp"/>
+        android:text="Registrarse"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:padding="12dp"
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:id="@+id/txtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already have an account? Login"
-        android:textColor="#6200EE"
-        android:layout_marginTop="12dp"/>
-
+        android:text="¿Ya tienes cuenta? Inicia sesión"
+        android:textColor="#1976D2"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

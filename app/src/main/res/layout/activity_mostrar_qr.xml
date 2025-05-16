@@ -1,29 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="#FFFFFF">
 
     <ImageView
         android:id="@+id/ivQRCode"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:contentDescription="QR Code" />
+        android:contentDescription="Código QR"
+        android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/tvFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        android:text="QR de asistencia para la fecha:" />
+        android:textColor="#1976D2"
+        android:fontFamily="sans-serif-medium"
+        android:text="QR de registro para la sesión del día:" />
 
     <Button
         android:id="@+id/btnRegresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Regresar"
+        android:text="Volver"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:padding="12dp"
         android:layout_marginTop="24dp"/>
-
 </LinearLayout>

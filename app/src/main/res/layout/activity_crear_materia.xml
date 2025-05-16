@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,36 +14,47 @@
             android:id="@+id/etNombreMateria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre de Materia"/>
+            android:hint="Nombre del taller"
+            android:backgroundTint="#1976D2"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/etCodigoMateria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Código de Materia"
-            android:layout_marginTop="8dp"/>
+            android:hint="Código del taller"
+            android:backgroundTint="#1976D2"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/etDescripcionMateria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descripción"
-            android:layout_marginTop="8dp"/>
+            android:hint="Descripción del taller"
+            android:backgroundTint="#1976D2"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="16dp" />
 
         <!-- Nuevos campos para la hora -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Horario de la materia"
-            android:layout_marginTop="8dp"
-            android:textStyle="bold"/>
+            android:text="Horario del taller"
+            android:textStyle="bold"
+            android:textColor="#1976D2"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginBottom="8dp"/>
 
         <EditText
             android:id="@+id/etDiasMateria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Días (ej: Lunes, Miércoles)"
-            android:layout_marginTop="8dp"/>
+            android:backgroundTint="#1976D2"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/etHoraInicio"
@@ -50,7 +62,9 @@
             android:layout_height="wrap_content"
             android:hint="Hora de inicio (ej: 08:00)"
             android:inputType="time"
-            android:layout_marginTop="8dp"/>
+            android:backgroundTint="#1976D2"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/etHoraFin"
@@ -58,14 +72,18 @@
             android:layout_height="wrap_content"
             android:hint="Hora de fin (ej: 10:00)"
             android:inputType="time"
-            android:layout_marginTop="8dp"/>
+            android:backgroundTint="#1976D2"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="24dp" />
 
         <Button
             android:id="@+id/btnGuardarMateria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar Materia"
-            android:layout_marginTop="16dp"/>
-
+            android:text="Guardar Taller"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-medium"
+            android:backgroundTint="#1976D2"
+            android:padding="12dp"/>
     </LinearLayout>
 </ScrollView>

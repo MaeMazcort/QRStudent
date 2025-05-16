@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#F5F9FF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,29 +19,37 @@
             android:id="@+id/txtMateriaNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Nombre del taller"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="#1976D2"
+            android:fontFamily="sans-serif-medium"/>
 
         <TextView
             android:id="@+id/txtCodigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Código: ART101"
             android:layout_marginTop="4dp"
-            android:textColor="?android:attr/textColorSecondary"/>
+            android:textColor="#555555"
+            android:fontFamily="sans-serif"/>
 
         <TextView
             android:id="@+id/txtProfesor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Instructor: Mtra. González"
             android:layout_marginTop="4dp"
-            android:textColor="?android:attr/textColorSecondary"/>
+            android:textColor="#555555"
+            android:fontFamily="sans-serif"/>
 
         <TextView
             android:id="@+id/txtAlumnos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Participantes: 18"
             android:layout_marginTop="4dp"
-            android:textColor="?android:attr/textColorSecondary"/>
-
+            android:textColor="#555555"
+            android:fontFamily="sans-serif"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

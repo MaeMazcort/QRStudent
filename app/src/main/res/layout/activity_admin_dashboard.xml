@@ -3,42 +3,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="bottom"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Panel del Coordinador"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#1976D2"
+        android:layout_marginBottom="32dp" />
 
     <Button
         android:id="@+id/btnCrearMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crear Materia"/>
+        android:text="Crear Taller"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:clipToOutline="true"
+        android:outlineProvider="background"/>
 
     <Button
         android:id="@+id/btnGestionarUsuarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Gestionar Usuarios" />
+        android:text="Gestionar Usuarios"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:clipToOutline="true"
+        android:outlineProvider="background"/>
 
     <Button
         android:id="@+id/btnAsignarMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Asignar Materias"
-        android:layout_marginTop="16dp"/>
+        android:text="Asignar Talleres"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:layout_marginBottom="40dp"
+        android:padding="12dp"
+        android:clipToOutline="true"
+        android:outlineProvider="background"/>
 
-    <!-- Espacio para empujar el botón hacia abajo -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_weight="0"/>
-
-    <!-- Botón de cerrar sesión en la parte inferior -->
     <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@android:color/holo_red_light"
         android:text="Cerrar Sesión"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1565C0"
+        android:padding="12dp"/>
+
 </LinearLayout>

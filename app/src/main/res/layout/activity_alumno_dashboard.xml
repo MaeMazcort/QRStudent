@@ -1,43 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="bottom"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Panel del Participante"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#1976D2"
+        android:layout_marginBottom="32dp" />
 
     <Button
         android:id="@+id/btnEscanearQR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Escanear QR Asistencia" />
+        android:text="Registrar Asistencia"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
 
     <Button
         android:id="@+id/btnVerCalificaciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver Calificaciones"
-        android:layout_marginTop="16dp"/>
+        android:text="Ver Evaluaciones"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
 
     <Button
         android:id="@+id/btnVerHorario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver Horario"
-        android:layout_marginTop="16dp"/>
-    <!-- Espacio para empujar el botón hacia abajo -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_weight="0"/>
+        android:text="Ver Calendario"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:layout_marginBottom="40dp"
+        android:padding="12dp" />
 
-    <!-- Botón de cerrar sesión en la parte inferior -->
     <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cerrar Sesión"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:textColor="@android:color/white"/>
-
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1565C0"
+        android:padding="12dp" />
 </LinearLayout>

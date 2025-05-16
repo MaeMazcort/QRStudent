@@ -4,48 +4,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="#FFFFFF">
 
-    <!-- Lista de materias -->
+    <!-- Lista de talleres -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Seleccione una materia:"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="Seleccione un taller:"
+        android:textColor="#1976D2"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMaterias"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1" />
 
-    <!-- Selección de profesor -->
+    <!-- Selección de instructor -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Seleccione un profesor:"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="Seleccione un instructor:"
+        android:textColor="#1976D2"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium" />
 
     <Spinner
         android:id="@+id/spinnerProfesores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
-    <!-- Selección de alumnos -->
+    <!-- Selección de participantes -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Seleccione alumnos (puede elegir varios):"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="Seleccione participantes (puede elegir varios):"
+        android:textColor="#1976D2"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium" />
 
     <ListView
         android:id="@+id/listViewAlumnos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1" />
 
     <!-- Botón para confirmar asignación -->
     <Button
@@ -53,7 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Asignar Materia"
-        android:enabled="false"/>
-
+        android:enabled="false"
+        android:text="Asignar Taller"
+        android:textColor="@android:color/white"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#1976D2"
+        android:padding="12dp" />
 </LinearLayout>

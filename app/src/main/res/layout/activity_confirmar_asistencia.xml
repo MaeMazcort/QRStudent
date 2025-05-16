@@ -1,21 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#FFFFFF">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Asistencia Confirmada ✅"
-        android:textSize="18sp"/>
+        android:text="Registro de asistencia exitoso 🎉"
+        android:textSize="20sp"
+        android:textColor="#1976D2"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="24dp" />
 
     <Button
         android:id="@+id/btnCerrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cerrar"
-        android:layout_marginTop="16dp"/>
-
+        android:text="Volver al inicio"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#1976D2"
+        android:fontFamily="sans-serif-medium"
+        android:padding="12dp"/>
 </LinearLayout>

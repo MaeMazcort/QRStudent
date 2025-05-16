@@ -6,13 +6,14 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#F5F9FF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="12dp"
+        android:padding="16dp"
         android:gravity="center_vertical"
         android:baselineAligned="false">
 
@@ -26,36 +27,41 @@
                 android:id="@+id/tvMateriaNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre de la Materia"
+                android:text="Nombre del taller"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#1976D2"
+                android:fontFamily="sans-serif-medium" />
 
             <TextView
                 android:id="@+id/tvMateriaCodigo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Código"
-                android:textColor="?android:attr/textColorSecondary"
-                android:layout_marginTop="2dp" />
+                android:text="Código: ART102"
+                android:textColor="#555555"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:id="@+id/tvMateriaHorario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Horario"
-                android:textColor="#3F51B5"
+                android:text="Horario: Mar y Jue, 11:00 - 13:00"
+                android:textColor="#1976D2"
                 android:textSize="14sp"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:id="@+id/tvMateriaDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descripción de la materia"
-                android:textColor="?android:attr/textColorSecondary"
-                android:layout_marginTop="4dp" />
+                android:text="Descripción del taller"
+                android:textColor="#555555"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif" />
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

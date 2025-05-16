@@ -5,16 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#FFFFFF"
     tools:context=".AsignarCalificacionesActivity">
 
     <TextView
         android:id="@+id/tvTituloMateria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Asignar Calificaciones"
+        android:text="Evaluar Participantes"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:textColor="#1976D2"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-medium"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -27,8 +30,9 @@
         android:id="@+id/tvNoAlumnos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No hay alumnos asignados a esta materia"
+        android:text="No hay pintores asignados a este taller"
         android:textAlignment="center"
+        android:textColor="#555555"
         android:layout_marginTop="24dp"
         android:visibility="gone"/>
 
@@ -37,5 +41,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_alumno_calificacion"/>
-
 </LinearLayout>

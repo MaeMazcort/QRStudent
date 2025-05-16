@@ -4,16 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="24dp"
+    android:background="#FFFFFF"
     tools:context=".VerCalificacionesActivity">
 
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mis Calificaciones"
+        android:text="Mis Evaluaciones"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#1976D2"
         android:layout_marginBottom="16dp"/>
 
     <ProgressBar
@@ -27,8 +30,10 @@
         android:id="@+id/tvNoMaterias"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No estás inscrito en ninguna materia"
+        android:text="No estás inscrito en ningún taller"
         android:textAlignment="center"
+        android:textColor="#555555"
+        android:fontFamily="sans-serif"
         android:layout_marginTop="24dp"
         android:visibility="gone"/>
 
@@ -37,5 +42,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_materia_alumno"/>
-
 </LinearLayout>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#F5F9FF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,18 +19,21 @@
             android:id="@+id/tvMateriaNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre de la materia"
-            android:textColor="@android:color/black"
+            android:text="Nombre del taller"
+            android:textColor="#1976D2"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium" />
 
         <TextView
             android:id="@+id/tvCalificacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Calificación: 95"
-            android:textSize="16sp" />
+            android:text="Evaluación: 95"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:fontFamily="sans-serif" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
